@@ -1,0 +1,21 @@
+name: Tests
+
+# Runs when a release is published. It can also be started by hand from the
+# Actions tab, which is the way to check a commit before making a release of it.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests
+        run: swift test
+      - name: Scan the demo app
+        run: swift run screenatlas scan examples/Trailhead/atlas.json

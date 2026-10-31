@@ -1,0 +1,9 @@
+.build/
+.swiftpm/
+.DS_Store
+*.xcodeproj
+
+# A map holds screenshots of the app it maps. Keep an app's config and output out
+# of this repository, and these are the backstop if one ends up here anyway.
+projects/
+out/

@@ -1,0 +1,19 @@
+{
+  "name": "Trailhead",
+  "project": ".",
+  "scheme": "Trailhead",
+  "sources": ["App"],
+  "roots": ["TrailsTab", "JournalTab", "ProfileTab"],
+  "settle": 1,
+  "screens": {
+    "TrailDetailView": {
+      "title": "Trail",
+      "steps": [{ "tab": "Trails" }, { "tapContaining": "Eagle Ridge" }],
+      "expect": ["Start Hike"]
+    },
+    "EntryDetailView": {
+      "title": "Journal Entry",
+      "steps": [{ "tab": "Journal" }, { "tapContaining": "First snow" }]
+    }
+  }
+}

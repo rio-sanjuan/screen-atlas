@@ -1,0 +1,23 @@
+{
+  "name": "My App",
+  "project": "../MyApp",
+  "workspace": "MyApp.xcworkspace",
+  "scheme": "MyApp",
+  "sources": ["App"],
+  "excludePaths": ["App/Preview/"],
+  "roots": ["HomeTab", "SettingsTab"],
+  "stopAt": ["ArticleDetailView"],
+  "screens": {
+    "ArticleDetailView": {
+      "title": "Article",
+      "steps": [{ "tab": "Home" }, { "tapContaining": "Recent" }],
+      "expect": ["Share"]
+    },
+    "CameraView": {
+      "skip": "The simulator has no camera."
+    }
+  },
+  "edges": [
+    { "from": "HomeTab", "to": "CameraView", "label": "Scan", "kind": "sheet" }
+  ]
+}

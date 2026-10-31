@@ -1,0 +1,44 @@
+# A UI test that drives whichever app the plan names, by bundle identifier. It
+# lives here, not in each app, so an app needs no test target, no accessibility
+# work and no launch hook before it can be mapped.
+#
+# Generated: `AtlasDriver.xcodeproj` is gitignored and rebuilt from this file.
+name: AtlasDriver
+options:
+  bundleIdPrefix: dev.screenatlas
+  deploymentTarget:
+    iOS: "18.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    GENERATE_INFOPLIST_FILE: YES
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 1.0
+    # Only ever runs in a simulator, where an ad-hoc signature is all it needs.
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    DEVELOPMENT_TEAM: ""
+targets:
+  AtlasDriverHost:
+    type: application
+    platform: iOS
+    sources: [Host]
+    settings:
+      base:
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+  AtlasDriverUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [UITests]
+    dependencies:
+      - target: AtlasDriverHost
+schemes:
+  AtlasDriver:
+    build:
+      targets:
+        AtlasDriverHost: all
+        AtlasDriverUITests: [test]
+    test:
+      targets:
+        - AtlasDriverUITests
